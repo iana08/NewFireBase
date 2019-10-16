@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.Toast
 import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.auth.FirebaseUser
-import com.google.firebase.quickstart.auth.R
+//import com.google.firebase.quickstart.auth.R
 import kotlinx.android.synthetic.main.activity_emailpassword.detail
 import kotlinx.android.synthetic.main.activity_emailpassword.emailCreateAccountButton
 import kotlinx.android.synthetic.main.activity_emailpassword.emailPasswordButtons
@@ -20,7 +20,7 @@ import kotlinx.android.synthetic.main.activity_emailpassword.signedInButtons
 import kotlinx.android.synthetic.main.activity_emailpassword.status
 import kotlinx.android.synthetic.main.activity_emailpassword.verifyEmailButton
 
-class EmailLogin : MainActivity(), View.OnClickListener {
+class EmailLogin : BaseActivity(), View.OnClickListener {
 
     // [START declare_auth]
     private lateinit var auth: FirebaseAuth

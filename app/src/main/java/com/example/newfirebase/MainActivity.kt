@@ -68,7 +68,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    public override fun onStart() {
+    override fun onStart() {
         super.onStart()
 //         Check if user is signed in (non-null) and update UI accordingly.
         val currentUser = mAuth!!.currentUser
@@ -98,7 +98,7 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
-    public fun createAccount(email: String, password: String) {
+    fun createAccount(email: String, password: String) {
         mAuth!!.createUserWithEmailAndPassword(email, password)
             .addOnCompleteListener(this
             ) { task ->
@@ -116,38 +116,4 @@ class MainActivity : AppCompatActivity() {
                 }
             }
     }
-    private fun signIn(email: String, password: String) {
-        Log.d("info", "signIn:$email")
-        if (!validateForm()) {
-            return
-        }
-
-        showProgressDialog()
-
-        // [START sign_in_with_email]
-        mAuth!!.signInWithEmailAndPassword(email, password)
-            .addOnCompleteListener(this) { task ->
-                if (task.isSuccessful) {
-                    // Sign in success, update UI with the signed-in user's information
-                    Log.d("info", "signInWithEmail:success")
-//                    val user = auth.currentUser
-                    updateUI(user)
-                } else {
-                    // If sign in fails, display a message to the user.
-                    Log.w("info", "signInWithEmail:failure", task.exception)
-                    Toast.makeText(baseContext, "Authentication failed.",
-                        Toast.LENGTH_SHORT).show()
-                    updateUI(null)
-                }
-
-                // [START_EXCLUDE]
-                if (!task.isSuccessful) {
-                    status.setText(R.string.auth_failed)
-                }
-//                hideProgressDialog()
-                // [END_EXCLUDE]
-            }
-        // [END sign_in_with_email]
-    }
-
 }
